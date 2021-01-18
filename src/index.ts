@@ -17,6 +17,7 @@ const createRole = (role: string) => {
       };
 
       return {
+        can,
         when: (conditions: Function | Function[]) => {
           permissions[role][action][target] = conditions;
         },
@@ -35,9 +36,10 @@ const testRole = (role: string) => {
 
     return (target: string) => {
       const conditions = (
-        permissions[role]
-        && permissions[role][action]
-        && permissions[role][action][target]
+        permissions[role]?.[action]?.[target]
+        || permissions[role]?.['*']?.[target]
+        || permissions[role]?.[action]?.['*']
+        || permissions[role]?.['*']?.['*']
       );
 
       if (typeof conditions === 'boolean') {

@@ -1,6 +1,6 @@
 {
   "name": "eazyl",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Simple Access Control Lists",
   "main": "lib/index.js",
   "scripts": {
@@ -67,6 +67,7 @@
   },
   "types": "types/index",
   "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.12.7",
     "@babel/runtime": "^7.5.5"
   }
 }
